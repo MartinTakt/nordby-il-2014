@@ -1,0 +1,21 @@
+{
+  "name": "Nordby IL 2014 Sommertrening",
+  "short_name": "Nordby IL 2014",
+  "description": "Sommerens treningslogg for Nordby IL 2014.",
+  "start_url": "./nordby-il-2014.html",
+  "display": "standalone",
+  "background_color": "#0b2b15",
+  "theme_color": "#0f5a2d",
+  "icons": [
+    {
+      "src": "assets/nordby-il-logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/nordby-il-logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
