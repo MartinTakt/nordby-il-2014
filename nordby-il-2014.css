@@ -1207,6 +1207,7 @@ textarea {
 
   .hero__actions .button,
   .entry-form__actions .button {
+    flex: 0 0 auto;
     width: 100%;
   }
 
