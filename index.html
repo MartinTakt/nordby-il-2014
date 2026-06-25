@@ -4,25 +4,1692 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow, noarchive">
-    <title>Nordby IL 2014</title>
-    <meta http-equiv="refresh" content="0; url=./nordby-il-2014.html">
-    <link rel="canonical" href="./nordby-il-2014.html">
-    <style>
-      body {
-        margin: 0;
-        min-height: 100vh;
-        display: grid;
-        place-items: center;
-        background: #0b2b15;
-        color: #fff7ef;
-        font-family: sans-serif;
-      }
-      a {
-        color: inherit;
-      }
-    </style>
+    <title>Nordby IL 2014 Sommertrening</title>
+    <meta
+      name="description"
+      content="En enkel sommerside for Nordby IL 2014 der spillerne kan loggføre egentrening, laste opp bilder og video og heie på hverandre."
+    >
+    <meta name="theme-color" content="#0f5a2d">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Nordby IL 2014">
+    <link rel="icon" href="assets/nordby-il-logo.png" type="image/png">
+    <link rel="manifest" href="nordby-il-2014.webmanifest">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Teko:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="stylesheet" href="nordby-il-2014.css?v=20260625b">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="nordby-il-2014-config.js"></script>
   </head>
   <body>
-    <p>Åpner siden. Hvis ingenting skjer, bruk <a href="./nordby-il-2014.html">denne lenken</a>.</p>
+    <div class="page-shell">
+      <div class="pitch-glow pitch-glow--left" aria-hidden="true"></div>
+      <div class="pitch-glow pitch-glow--right" aria-hidden="true"></div>
+
+      <header class="topbar">
+        <a class="brand" href="#top" aria-label="Til toppen">
+          <img
+            class="brand__logo"
+            src="assets/nordby-il-logo.png"
+            alt="Nordby IL"
+            width="96"
+            height="96"
+          >
+          <div class="brand__text">
+            <span class="brand__kicker">Nordby IL 2014</span>
+            <strong>Egentrening sommeren 2026</strong>
+          </div>
+        </a>
+
+        <nav class="topbar__nav" aria-label="Hovedmeny">
+          <a href="#registrer">Registrer økt</a>
+          <a href="#feed">Sommerfeed</a>
+          <a href="#laget">Lagoversikt</a>
+        </nav>
+      </header>
+
+      <main id="top">
+        <section class="hero">
+          <div class="hero__content reveal">
+            <p class="hero__eyebrow">Sommer 2026 • tren, del, hei</p>
+            <h1>Sommertrening</h1>
+            <p class="hero__lead">
+              Her kan spillerne loggføre økter, laste opp bilder og video fra
+              egentreningen og heie på hverandre gjennom sommeren.
+            </p>
+
+            <div class="hero__actions">
+              <a class="button button--primary" href="#registrer">Legg inn økt</a>
+              <a class="button button--ghost" href="#feed">Se aktivitetene</a>
+            </div>
+          </div>
+
+          <aside class="hero__panel reveal" style="--delay: 0.1s">
+            <div class="scoreboard">
+              <div class="scoreboard__header">
+                <span>Sommerstatus</span>
+                <strong>Nordby IL 2014</strong>
+              </div>
+              <div class="scoreboard__grid">
+                <article>
+                  <span>Økter gjennomført</span>
+                  <strong id="stat-sessions">0</strong>
+                </article>
+                <article>
+                  <span>Meter løpt</span>
+                  <strong id="stat-distance">0</strong>
+                </article>
+                <article>
+                  <span>Aktive spillere</span>
+                  <strong id="stat-players">0</strong>
+                </article>
+              </div>
+              <p class="scoreboard__note">
+                <span id="storage-summary">
+                  Prototypen lagrer aktivitetene lokalt i nettleseren på denne
+                  enheten.
+                </span>
+              </p>
+              <p class="sync-status" id="sync-status">Lokal demo uten delt database</p>
+            </div>
+          </aside>
+
+          <div class="challenge-card challenge-card--hero reveal" style="--delay: 0.14s">
+            <div class="challenge-card__summary">
+              <p class="challenge-card__kicker" id="challenge-kicker">Dagens utfordring</p>
+              <h2 id="challenge-title">Dagens utfordring</h2>
+              <ul id="challenge-goals"></ul>
+            </div>
+            <div class="challenge-card__calendar">
+              <div class="challenge-schedule">
+                <p class="challenge-schedule__title">De neste 5 dagene</p>
+                <div class="challenge-schedule__grid" id="challenge-schedule"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="how reveal">
+          <div class="section-heading">
+            <p class="section-heading__eyebrow">Slik fungerer det</p>
+          </div>
+
+          <div class="how__grid">
+            <article class="feature-card">
+              <span class="feature-card__number">01</span>
+              <h3>Registrer økta</h3>
+              <p>
+                Velg navn, type økt og hvor lenge du trente. Legg gjerne til en
+                kort tekst om hva du jobbet med.
+              </p>
+            </article>
+            <article class="feature-card">
+              <span class="feature-card__number">02</span>
+              <h3>Last opp bilde eller video</h3>
+              <p>
+                Velg et bilde eller en videosnutt direkte fra mobilen eller
+                maskinen, så blir den synlig sammen med økta.
+              </p>
+            </article>
+            <article class="feature-card">
+              <span class="feature-card__number">03</span>
+              <h3>Hei på hverandre</h3>
+              <p>
+                Lagkamerater og foreldre kan like, kommentere og gi konkret
+                oppmuntring i feeden.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="social-strip reveal" id="pulse">
+          <div class="section-heading">
+            <p class="section-heading__eyebrow">Lagpuls</p>
+            <h2>Se hva lagkompisene dine har gjort</h2>
+          </div>
+
+          <div class="stories" id="stories-list"></div>
+          <div class="stories-actions">
+            <button class="button button--ghost button--small" type="button" id="stories-toggle" hidden>
+              Se flere spillere
+            </button>
+          </div>
+
+          <div class="pulse-grid">
+            <article class="pulse-card pulse-card--minutes">
+              <span>Mest treningstid</span>
+              <strong id="pulse-most-minutes">-</strong>
+              <p id="pulse-most-minutes-meta">Ingen aktivitet ennå</p>
+            </article>
+            <article class="pulse-card pulse-card--streak">
+              <span>Beste streak</span>
+              <strong id="pulse-best-streak">-</strong>
+              <p id="pulse-best-streak-meta">Ingen aktivitet ennå</p>
+            </article>
+            <article class="pulse-card pulse-card--support">
+              <span>Løpt lengst</span>
+              <strong id="pulse-most-distance">-</strong>
+              <p id="pulse-most-distance-meta">Ingen aktivitet ennå</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="log-layout">
+          <section class="entry-panel reveal" id="registrer">
+            <div class="section-heading">
+              <p class="section-heading__eyebrow">Registrer økt</p>
+              <h2>Sommerens treningslogg</h2>
+            </div>
+
+            <form class="entry-form" id="entry-form">
+              <label>
+                <span>Spiller</span>
+                <select id="player-select" name="player" required></select>
+              </label>
+
+              <label>
+                <span>Aktivitet</span>
+                <select id="activity-select" name="activity" required>
+                  <option value="Lek med ball">Lek med ball</option>
+                  <option value="Skuddtrening">Skuddtrening</option>
+                  <option value="Pasning og mottak">Pasning og mottak</option>
+                  <option value="Styrke">Styrke</option>
+                  <option value="Løp">Løp</option>
+                  <option value="Kamp">Kamp</option>
+                </select>
+              </label>
+
+              <label>
+                <span>Minutter</span>
+                <input
+                  id="minutes-input"
+                  name="minutes"
+                  type="number"
+                  min="5"
+                  max="240"
+                  step="5"
+                  value="30"
+                  required
+                >
+              </label>
+
+              <label id="distance-field" hidden>
+                <span>Meter løpt</span>
+                <input
+                  id="distance-input"
+                  name="distance"
+                  type="number"
+                  min="50"
+                  step="50"
+                  placeholder="For eksempel 1200"
+                >
+              </label>
+
+              <label class="entry-form__wide">
+                <span>Hva gjorde du?</span>
+                <textarea
+                  id="notes-input"
+                  name="notes"
+                  rows="4"
+                  placeholder="Eksempel: 150 touch, vendinger på første touch og 20 avslutninger med venstre."
+                  required
+                ></textarea>
+              </label>
+
+              <label class="entry-form__wide">
+                <span>Last opp bilde eller video</span>
+                <input
+                  id="media-input"
+                  name="media"
+                  type="file"
+                  accept="image/*,video/*"
+                >
+                <small class="entry-form__hint" id="media-hint">
+                  Du kan legge ved ett bilde eller én videosnutt.
+                </small>
+              </label>
+
+              <label class="entry-form__checkbox">
+                <input id="challenge-input" name="challenge" type="checkbox">
+                <span>Jeg fullførte dagens utfordring</span>
+              </label>
+
+              <div class="entry-form__actions">
+                <button class="button button--primary" type="submit">Publiser økt</button>
+                <button class="button button--ghost" type="button" id="reset-demo">
+                  Nullstill demo
+                </button>
+              </div>
+            </form>
+          </section>
+
+          <aside class="insight-panel reveal" style="--delay: 0.12s">
+            <div class="panel-card">
+              <p class="panel-card__eyebrow">Trenerens bruk</p>
+              <h3>Dette gir deg rask oversikt.</h3>
+              <ul class="panel-card__list">
+                <li>Hvem som er aktive i sommer</li>
+                <li>Hva spillerne trener mest på</li>
+                <li>Hvem som deler bilder, video og refleksjon</li>
+                <li>Hvilke innlegg som skaper mest engasjement</li>
+              </ul>
+            </div>
+
+            <div class="panel-card panel-card--accent">
+              <p class="panel-card__eyebrow" id="backend-kicker">Publisering</p>
+              <h3 id="backend-title">Klar for delt bruk på mobil.</h3>
+              <p id="backend-copy">
+                Når Supabase er koblet til, lagres økter, kommentarer og media
+                felles for hele laget uten at spillerne trenger vanlig
+                innlogging.
+              </p>
+            </div>
+          </aside>
+        </section>
+
+        <section class="feed-section reveal" id="feed">
+          <div class="section-heading section-heading--split">
+            <div>
+              <p class="section-heading__eyebrow">Sommerfeed</p>
+              <h2>Gi gutta en tilbakemelding</h2>
+            </div>
+
+            <label class="filter">
+              <span>Filtrer spiller</span>
+              <select id="feed-filter">
+                <option value="Alle">Alle spillere</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="feed-toolbar">
+            <div class="feed-toolbar__item">
+              <span>Feeden føles som en sosial strøm</span>
+              <strong>Siste økter først, med reaksjoner, kommentarer og høydepunkter.</strong>
+            </div>
+            <div class="feed-toolbar__item">
+              <span>Konkurransen er synlig</span>
+              <strong>Poeng, minutter og streaks trekkes rett inn i innleggene.</strong>
+            </div>
+          </div>
+
+          <div class="feed" id="feed-list" aria-live="polite"></div>
+        </section>
+
+        <section class="team-section reveal" id="laget">
+          <div class="section-heading section-heading--split">
+            <div>
+              <p class="section-heading__eyebrow">Lagoversikt</p>
+              <h2>Hvem trener mest?</h2>
+            </div>
+            <p class="team-section__note">
+              Poeng er bare ment som motivasjon: aktivitet teller mer enn nivå.
+            </p>
+          </div>
+
+          <div class="team-layout">
+            <div class="leaderboard">
+              <div class="leaderboard__head">
+                <span>Poengtavle</span>
+                <strong>Topp 10 akkurat nå</strong>
+              </div>
+              <div id="leaderboard-list"></div>
+            </div>
+
+            <div class="roster-card">
+              <div class="roster-card__head">
+                <span>Spillergruppe</span>
+                <strong>Nordby IL 2014</strong>
+              </div>
+              <div class="roster-grid" id="roster-grid"></div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <template id="feed-item-template">
+      <article class="feed-card">
+        <div class="feed-card__topline">
+          <div class="feed-card__avatar"></div>
+          <div class="feed-card__identity">
+            <p class="feed-card__player"></p>
+            <p class="feed-card__stamp"></p>
+          </div>
+          <span class="feed-card__rank"></span>
+        </div>
+
+        <div class="feed-card__meta">
+          <span class="feed-card__activity"></span>
+          <span class="feed-card__streak"></span>
+        </div>
+
+        <p class="feed-card__minutes"></p>
+        <p class="feed-card__notes"></p>
+        <div class="feed-card__media" hidden></div>
+
+        <div class="feed-card__badges"></div>
+
+        <div class="feed-card__socialline">
+          <span class="feed-card__socialstat"></span>
+          <span class="feed-card__socialstat"></span>
+          <span class="feed-card__socialstat"></span>
+        </div>
+
+        <div class="feed-card__actions">
+          <button class="reaction-button reaction-button--cheer" type="button" data-reaction="cheer">Heia</button>
+          <button class="reaction-button reaction-button--fire" type="button" data-reaction="fire">🔥</button>
+          <button class="reaction-button reaction-button--clap" type="button" data-reaction="clap">👏</button>
+          <span class="reaction-count"></span>
+        </div>
+
+        <div class="comment-list"></div>
+
+        <form class="comment-form">
+          <input class="comment-form__author" type="text" maxlength="32" placeholder="Navn">
+          <input class="comment-form__text" type="text" maxlength="120" placeholder="Skriv en kort tilbakemelding">
+          <button class="button button--ghost button--small" type="submit">Kommenter</button>
+        </form>
+      </article>
+    </template>
+
+    <script>
+      (function () {
+        var players = [
+          "Abdullahi Abdirisaq",
+          "Adrian Mulkurti",
+          "Ahsan Iftikhar Ahmad",
+          "Alf Agerup-Blyverket",
+          "Bo August Fossheim Solberg",
+          "Christian Andrew Andersen",
+          "Elias Tesema",
+          "Elvis Kuqi",
+          "Emilian Bicaj",
+          "Falk Bjørbæk-McMillan",
+          "Filip De La Vega",
+          "Filip Døhl Petersen",
+          "Hans Wilhelm Kongbäck",
+          "Helen Kidane",
+          "Henrik Hallingstad Larsen",
+          "Hevintan Nisanthan",
+          "Isaac Sultan",
+          "Johan Lillegrend Hansen",
+          "Jonathan Engødegård",
+          "Karl Felix Haukelidæter",
+          "Kasper Sletholen",
+          "Kristian Brændshøi",
+          "Leo Kronborg-Berggren",
+          "Leonard Hasli Hansen",
+          "Markus Ulvan",
+          "Marley Ashtiani",
+          "Michael B H Vinje",
+          "Mohammed Zina",
+          "Nikolai Hovland Hjeljord",
+          "Nizar Lahnech",
+          "Noah Løkken Wold",
+          "Olav Sundtjønn Smestad",
+          "Per Sælid Johannessen",
+          "Sebastian Tonaas Fauske",
+          "Tobias Frich Grevstad",
+          "Vincent Lundgren",
+          "Wiktor Ludwik Harlacz"
+        ];
+
+        var activityPoints = {
+          "Lek med ball": 5,
+          "Skuddtrening": 4,
+          "Pasning og mottak": 4,
+          "Styrke": 3,
+          "Løp": 3,
+          "Kamp": 4
+        };
+
+        var storageKey = "nordby-il-2014-sommerlogg-v5";
+        var mediaDbName = "nordby-il-2014-media-v5";
+        var mediaStoreName = "entryMedia";
+        var mediaDbPromise = null;
+        var activeMediaUrls = [];
+        var challengeStartDate = new Date("2026-06-25T00:00:00");
+        var challengeDays = [
+          {
+            title: "Touch-konkurransen",
+            goals: ["200 touch med ball", "20 vendinger med begge bein", "Vis én favorittfinte"]
+          },
+          {
+            title: "Skudd på mål",
+            goals: ["25 avslutninger", "10 med svakere bein", "5 skudd etter egen finte"]
+          },
+          {
+            title: "Pasningsveggen",
+            goals: ["100 pasninger mot vegg", "50 mottak med første touch", "20 pasninger med utside"]
+          },
+          {
+            title: "Styrke for fotball",
+            goals: ["3 runder knebøy og utfall", "30 sekunder planke x 3", "8 spensthopp x 3"]
+          },
+          {
+            title: "Løpsuka",
+            goals: ["6 korte sprinter", "4 retningsforandringer", "1 rolig joggetur med ball"]
+          },
+          {
+            title: "Kampblikk",
+            goals: ["Se en kamp", "Finn 3 gode løp uten ball", "Skriv én ting du vil teste selv"]
+          },
+          {
+            title: "1 mot 1-uka",
+            goals: ["Øv på 3 finter", "15 eksplosive starter", "Vis én fintesekvens på video"]
+          },
+          {
+            title: "Mottak og medtak",
+            goals: ["20 mottak med høyre", "20 mottak med venstre", "20 medtak fremover i fart"]
+          },
+          {
+            title: "Presisjonsuka",
+            goals: ["Treff et lite mål 15 ganger", "10 presise innlegg eller chipper", "Test ulike avstander"]
+          },
+          {
+            title: "Sommerfinalen",
+            goals: ["Velg favorittøvelsen din", "Lag en kombiøkt på 30 minutter", "Del bilde eller video av finalen"]
+          },
+          {
+            title: "Hurtige føtter",
+            goals: ["5 runder stige eller kjappe steg", "10 sideforflytninger", "20 touch i høyt tempo"]
+          },
+          {
+            title: "Innlegg og avslutning",
+            goals: ["10 innlegg eller chipper", "10 avslutninger på første touch", "5 volleyskudd"]
+          },
+          {
+            title: "Rolig ballkontroll",
+            goals: ["15 minutter lek med ball", "50 sålerullinger", "50 oversteg"]
+          },
+          {
+            title: "Løp med retningsskifte",
+            goals: ["8 korte drag", "6 vendinger rundt markering", "1 drag med ball i fart"]
+          },
+          {
+            title: "Styrke i kjernen",
+            goals: ["3 x 30 sekunder planke", "3 x 12 situps", "3 x 10 rygghev"]
+          },
+          {
+            title: "Kampoppdrag",
+            goals: ["Spill kamp eller småspill", "Tenk på første press", "Skriv én ting du gjorde bra"]
+          },
+          {
+            title: "Presis pasningsfot",
+            goals: ["60 pasninger med høyre", "60 pasninger med venstre", "20 pasninger med ett touch"]
+          },
+          {
+            title: "Tempo med ball",
+            goals: ["5 føringsdrag i fart", "10 stopp og start", "3 spurter med avslutning"]
+          },
+          {
+            title: "Ballmestring i små rom",
+            goals: ["Lag en liten firkant", "Jobb 10 minutter i firkanten", "Bruk begge bein hele veien"]
+          },
+          {
+            title: "Skudd etter vending",
+            goals: ["10 vendinger med skudd", "10 skudd med motsatt fot", "5 skudd i lengste hjørne"]
+          },
+          {
+            title: "Utholdenhet med ball",
+            goals: ["20 minutter rolig aktivitet", "Ha ballen med så mye som mulig", "Avslutt med 20 touch"]
+          },
+          {
+            title: "Mottak under press",
+            goals: ["10 mottak med kroppen mellom ball og mål", "10 mottak i fart", "10 medtak til ny retning"]
+          },
+          {
+            title: "Finter du stoler på",
+            goals: ["Velg 2 finter", "Gjør hver finte 15 ganger", "Vis dem med tempo"]
+          },
+          {
+            title: "Skuddserie",
+            goals: ["30 avslutninger totalt", "10 langs bakken", "10 løftede skudd", "10 på første touch"]
+          },
+          {
+            title: "Løp langt",
+            goals: ["Løp minst 1500 meter", "Hold jevnt tempo", "Avslutt med 5 spurter"]
+          },
+          {
+            title: "Styrke og balanse",
+            goals: ["3 x 10 knebøy", "3 x 8 ettbeins balanse per bein", "3 x 10 utfall"]
+          },
+          {
+            title: "Se og lær",
+            goals: ["Se 10 minutter av en god spiller", "Finn 3 detaljer", "Test én detalj selv etterpå"]
+          },
+          {
+            title: "Kompis-utfordringen",
+            goals: ["Tren sammen med en venn", "Del et bilde eller en video", "Heia på hverandre i feeden"]
+          },
+          {
+            title: "Først på ball",
+            goals: ["10 eksplosive starter", "10 førsteberøringer fremover", "10 førsteberøringer til siden"]
+          },
+          {
+            title: "Kampklar avslutning",
+            goals: ["Sett sammen en økt på 25 minutter", "Ha med pasning, løp og skudd", "Del hva som gikk best"]
+          }
+        ];
+        var demoEntries = [];
+
+        var entryForm = document.getElementById("entry-form");
+        var playerSelect = document.getElementById("player-select");
+        var activitySelect = document.getElementById("activity-select");
+        var distanceField = document.getElementById("distance-field");
+        var distanceInput = document.getElementById("distance-input");
+        var mediaInput = document.getElementById("media-input");
+        var mediaHint = document.getElementById("media-hint");
+        var feedFilter = document.getElementById("feed-filter");
+        var feedList = document.getElementById("feed-list");
+        var storiesList = document.getElementById("stories-list");
+        var storiesToggle = document.getElementById("stories-toggle");
+        var leaderboardList = document.getElementById("leaderboard-list");
+        var rosterGrid = document.getElementById("roster-grid");
+        var feedTemplate = document.getElementById("feed-item-template");
+        var statSessions = document.getElementById("stat-sessions");
+        var statDistance = document.getElementById("stat-distance");
+        var statPlayers = document.getElementById("stat-players");
+        var challengeKicker = document.getElementById("challenge-kicker");
+        var resetDemoButton = document.getElementById("reset-demo");
+        var syncStatus = document.getElementById("sync-status");
+        var storageSummary = document.getElementById("storage-summary");
+        var backendKicker = document.getElementById("backend-kicker");
+        var backendTitle = document.getElementById("backend-title");
+        var backendCopy = document.getElementById("backend-copy");
+        var pulseMostMinutes = document.getElementById("pulse-most-minutes");
+        var pulseMostMinutesMeta = document.getElementById("pulse-most-minutes-meta");
+        var pulseBestStreak = document.getElementById("pulse-best-streak");
+        var pulseBestStreakMeta = document.getElementById("pulse-best-streak-meta");
+        var pulseMostDistance = document.getElementById("pulse-most-distance");
+        var pulseMostDistanceMeta = document.getElementById("pulse-most-distance-meta");
+        var runtimeConfig = window.NORDBY_APP_CONFIG || {};
+        var remoteConfig = runtimeConfig.supabase || {};
+        var appState = {
+          mode: "local",
+          supabase: null,
+          entries: [],
+          remotePollId: null,
+          lastRemoteSync: null,
+          showAllStories: false,
+          selectedChallengeIndex: null
+        };
+
+        function normalizeEntries(entries) {
+          return entries.map(function (entry, index) {
+            var reactions = entry.reactions || { cheer: entry.likes || 0, fire: 0, clap: 0 };
+            return {
+              id: entry.id || String(index + 1),
+              player: entry.player,
+              activity: entry.activity,
+              minutes: Number(entry.minutes || 0),
+              meters: Number(entry.meters || 0),
+              notes: entry.notes || "",
+              media: entry.media || null,
+              challenge: Boolean(entry.challenge),
+              createdAt: entry.createdAt || new Date().toISOString(),
+              comments: Array.isArray(entry.comments) ? entry.comments : [],
+              reactions: {
+                cheer: Number(reactions.cheer || 0),
+                fire: Number(reactions.fire || 0),
+                clap: Number(reactions.clap || 0)
+              }
+            };
+          });
+        }
+
+        function openMediaDb() {
+          if (mediaDbPromise) {
+            return mediaDbPromise;
+          }
+
+          if (!window.indexedDB) {
+            return Promise.reject(new Error("indexedDB er ikke tilgjengelig"));
+          }
+
+          mediaDbPromise = new Promise(function (resolve, reject) {
+            var request = window.indexedDB.open(mediaDbName, 1);
+
+            request.onupgradeneeded = function () {
+              var db = request.result;
+              if (!db.objectStoreNames.contains(mediaStoreName)) {
+                db.createObjectStore(mediaStoreName, { keyPath: "id" });
+              }
+            };
+
+            request.onsuccess = function () {
+              resolve(request.result);
+            };
+
+            request.onerror = function () {
+              reject(request.error);
+            };
+          });
+
+          return mediaDbPromise;
+        }
+
+        function saveMediaFile(entryId, file) {
+          return openMediaDb().then(function (db) {
+            return new Promise(function (resolve, reject) {
+              var transaction = db.transaction(mediaStoreName, "readwrite");
+              transaction.objectStore(mediaStoreName).put({ id: entryId, file: file });
+              transaction.oncomplete = function () { resolve(); };
+              transaction.onerror = function () { reject(transaction.error); };
+            });
+          });
+        }
+
+        function loadMediaFile(entryId) {
+          return openMediaDb().then(function (db) {
+            return new Promise(function (resolve, reject) {
+              var transaction = db.transaction(mediaStoreName, "readonly");
+              var request = transaction.objectStore(mediaStoreName).get(entryId);
+              request.onsuccess = function () {
+                resolve(request.result ? request.result.file : null);
+              };
+              request.onerror = function () {
+                reject(request.error);
+              };
+            });
+          });
+        }
+
+        function clearMediaFiles() {
+          return openMediaDb().then(function (db) {
+            return new Promise(function (resolve, reject) {
+              var transaction = db.transaction(mediaStoreName, "readwrite");
+              transaction.objectStore(mediaStoreName).clear();
+              transaction.oncomplete = function () { resolve(); };
+              transaction.onerror = function () { reject(transaction.error); };
+            });
+          });
+        }
+
+        function revokeMediaUrls() {
+          activeMediaUrls.forEach(function (url) {
+            window.URL.revokeObjectURL(url);
+          });
+          activeMediaUrls = [];
+        }
+
+        function createTrackedUrl(file) {
+          var url = window.URL.createObjectURL(file);
+          activeMediaUrls.push(url);
+          return url;
+        }
+
+        function slugify(value) {
+          return String(value)
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/^-+|-+$/g, "")
+            .slice(0, 60);
+        }
+
+        function isRemoteConfigured() {
+          return Boolean(remoteConfig.url && remoteConfig.anonKey);
+        }
+
+        function getRemoteBucket() {
+          return remoteConfig.mediaBucket || "nordby-il-2014-media";
+        }
+
+        function setEntries(entries) {
+          appState.entries = normalizeEntries(entries);
+          return appState.entries.slice();
+        }
+
+        function getEntries() {
+          if (appState.mode === "remote") {
+            return appState.entries.slice();
+          }
+          return loadEntries();
+        }
+
+        function updateRuntimeModeUi() {
+          if (appState.mode === "remote") {
+            syncStatus.textContent = appState.lastRemoteSync
+              ? "Delt database aktiv • sist synket " + new Intl.DateTimeFormat("nb-NO", { hour: "2-digit", minute: "2-digit" }).format(appState.lastRemoteSync)
+              : "Delt database aktiv";
+            storageSummary.textContent = "Økter, kommentarer og media lagres delt for hele laget og fungerer på tvers av mobiler.";
+            backendKicker.textContent = "Delt lagring";
+            backendTitle.textContent = "Felles feed for hele laget.";
+            backendCopy.textContent = "Alle som åpner siden ser de samme øktene. Spillere trenger ikke vanlig innlogging, siden bruker anonym innlogging per enhet i bakgrunnen.";
+            resetDemoButton.textContent = "Oppdater feed";
+            mediaHint.textContent = "Bilde/video lastes opp til lagets delte feed.";
+          } else {
+            syncStatus.textContent = "Lokal demo uten delt database";
+            storageSummary.textContent = "Prototypen lagrer aktivitetene lokalt i nettleseren på denne enheten.";
+            backendKicker.textContent = "Publisering";
+            backendTitle.textContent = "Klar for delt bruk på mobil.";
+            backendCopy.textContent = "Når Supabase er koblet til, lagres økter, kommentarer og media felles for hele laget uten at spillerne trenger vanlig innlogging.";
+            resetDemoButton.textContent = "Nullstill demo";
+            mediaHint.textContent = "Du kan legge ved ett bilde eller én videosnutt. Filen lagres lokalt i denne nettleseren.";
+          }
+        }
+
+        async function ensureRemoteClient() {
+          if (!isRemoteConfigured()) {
+            return null;
+          }
+
+          if (appState.supabase) {
+            return appState.supabase;
+          }
+
+          if (!window.supabase || !window.supabase.createClient) {
+            throw new Error("Supabase-klienten er ikke lastet");
+          }
+
+          appState.supabase = window.supabase.createClient(remoteConfig.url, remoteConfig.anonKey, {
+            auth: {
+              persistSession: true,
+              autoRefreshToken: true,
+              detectSessionInUrl: true
+            }
+          });
+
+          return appState.supabase;
+        }
+
+        async function ensureRemoteSession() {
+          var supabase = await ensureRemoteClient();
+          var sessionResult = await supabase.auth.getSession();
+          if (sessionResult.error) {
+            throw sessionResult.error;
+          }
+
+          if (sessionResult.data.session) {
+            return sessionResult.data.session;
+          }
+
+          var signInResult = await supabase.auth.signInAnonymously();
+          if (signInResult.error) {
+            throw signInResult.error;
+          }
+
+          return signInResult.data.session || null;
+        }
+
+        function mapRemoteEntries(posts, comments) {
+          return posts.map(function (post) {
+            var postComments = comments
+              .filter(function (comment) { return comment.post_id === post.id; })
+              .sort(function (a, b) { return new Date(a.created_at) - new Date(b.created_at); })
+              .map(function (comment) {
+                return {
+                  author: comment.author,
+                  text: comment.text
+                };
+              });
+
+            return {
+              id: post.id,
+              player: post.player,
+              activity: post.activity,
+              minutes: Number(post.minutes || 0),
+              meters: Number(post.meters || 0),
+              notes: post.notes || "",
+              media: post.media_path ? {
+                path: post.media_path,
+                type: post.media_type || "",
+                url: appState.supabase.storage.from(getRemoteBucket()).getPublicUrl(post.media_path).data.publicUrl
+              } : null,
+              challenge: Boolean(post.challenge_done),
+              createdAt: post.created_at,
+              reactions: {
+                cheer: Number(post.cheer_count || 0),
+                fire: Number(post.fire_count || 0),
+                clap: Number(post.clap_count || 0)
+              },
+              comments: postComments
+            };
+          });
+        }
+
+        async function syncRemoteEntries() {
+          var supabase = await ensureRemoteClient();
+          await ensureRemoteSession();
+
+          var postResult = await supabase
+            .from("nordby_entries")
+            .select("*")
+            .order("created_at", { ascending: false });
+          if (postResult.error) {
+            throw postResult.error;
+          }
+
+          var commentResult = await supabase
+            .from("nordby_comments")
+            .select("*")
+            .order("created_at", { ascending: true });
+          if (commentResult.error) {
+            throw commentResult.error;
+          }
+
+          appState.lastRemoteSync = new Date();
+          setEntries(mapRemoteEntries(postResult.data || [], commentResult.data || []));
+          updateRuntimeModeUi();
+          renderAll(appState.entries);
+        }
+
+        function startRemotePolling() {
+          if (appState.remotePollId) {
+            window.clearInterval(appState.remotePollId);
+          }
+
+          appState.remotePollId = window.setInterval(function () {
+            syncRemoteEntries().catch(function () {
+              syncStatus.textContent = "Kunne ikke oppdatere delt database akkurat nå";
+            });
+          }, remoteConfig.refreshMs || 20000);
+        }
+
+        async function uploadRemoteMedia(entryId, file, player) {
+          if (!file) {
+            return null;
+          }
+
+          var supabase = await ensureRemoteClient();
+          var extension = file.name && file.name.indexOf(".") > -1
+            ? file.name.split(".").pop().toLowerCase()
+            : "bin";
+          var filePath = slugify(player) + "/" + entryId + "." + extension;
+          var uploadResult = await supabase.storage
+            .from(getRemoteBucket())
+            .upload(filePath, file, {
+              contentType: file.type || "application/octet-stream",
+              upsert: false
+            });
+
+          if (uploadResult.error) {
+            throw uploadResult.error;
+          }
+
+          return {
+            path: filePath,
+            type: file.type || "application/octet-stream",
+            url: supabase.storage.from(getRemoteBucket()).getPublicUrl(filePath).data.publicUrl
+          };
+        }
+
+        async function createRemoteEntry(entry, file) {
+          var supabase = await ensureRemoteClient();
+          await ensureRemoteSession();
+          var remoteMedia = await uploadRemoteMedia(entry.id, file, entry.player);
+
+          var insertResult = await supabase.from("nordby_entries").insert({
+            id: entry.id,
+            player: entry.player,
+            activity: entry.activity,
+            minutes: entry.minutes,
+            meters: entry.meters,
+            notes: entry.notes,
+            media_path: remoteMedia ? remoteMedia.path : null,
+            media_type: remoteMedia ? remoteMedia.type : null,
+            challenge_done: entry.challenge
+          });
+
+          if (insertResult.error) {
+            throw insertResult.error;
+          }
+
+          await syncRemoteEntries();
+        }
+
+        async function addRemoteComment(entryId, author, text) {
+          var supabase = await ensureRemoteClient();
+          await ensureRemoteSession();
+          var insertResult = await supabase.from("nordby_comments").insert({
+            post_id: entryId,
+            author: author,
+            text: text
+          });
+
+          if (insertResult.error) {
+            throw insertResult.error;
+          }
+
+          await syncRemoteEntries();
+        }
+
+        async function addRemoteReaction(entryId, reactionType) {
+          var supabase = await ensureRemoteClient();
+          await ensureRemoteSession();
+          var rpcResult = await supabase.rpc("increment_nordby_reaction", {
+            p_post_id: entryId,
+            p_reaction: reactionType
+          });
+
+          if (rpcResult.error) {
+            throw rpcResult.error;
+          }
+
+          await syncRemoteEntries();
+        }
+
+        function loadEntries() {
+          if (appState.mode === "remote") {
+            return appState.entries.slice();
+          }
+
+          var raw = window.localStorage.getItem(storageKey);
+          if (!raw) {
+            window.localStorage.setItem(storageKey, JSON.stringify(demoEntries));
+            return normalizeEntries(demoEntries.slice());
+          }
+
+          try {
+            return normalizeEntries(JSON.parse(raw));
+          } catch (error) {
+            window.localStorage.setItem(storageKey, JSON.stringify(demoEntries));
+            return normalizeEntries(demoEntries.slice());
+          }
+        }
+
+        function saveEntries(entries) {
+          if (appState.mode === "remote") {
+            appState.entries = normalizeEntries(entries);
+            return;
+          }
+          window.localStorage.setItem(storageKey, JSON.stringify(entries));
+        }
+
+        function formatDate(isoDate) {
+          return new Intl.DateTimeFormat("nb-NO", {
+            day: "numeric",
+            month: "long",
+            hour: "2-digit",
+            minute: "2-digit"
+          }).format(new Date(isoDate));
+        }
+
+        function formatNumber(value) {
+          return new Intl.NumberFormat("nb-NO").format(Number(value || 0));
+        }
+
+        function formatStreak(days) {
+          return days === 1 ? "1 dag streak" : formatNumber(days) + " dager streak";
+        }
+
+        function startOfLocalDay(date) {
+          return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+        }
+
+        function escapeHtml(value) {
+          return String(value)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/\"/g, "&quot;")
+            .replace(/'/g, "&#39;");
+        }
+
+        function renderChallengeDetails(challenge, label) {
+          var challengeTitle = document.getElementById("challenge-title");
+          var challengeGoals = document.getElementById("challenge-goals");
+
+          challengeKicker.textContent = label;
+          challengeTitle.textContent = challenge.title;
+          challengeGoals.innerHTML = "";
+          challenge.goals.forEach(function (goal) {
+            var item = document.createElement("li");
+            item.textContent = goal;
+            challengeGoals.appendChild(item);
+          });
+        }
+
+        function renderChallengeSchedule() {
+          var challengeSchedule = document.getElementById("challenge-schedule");
+          var today = startOfLocalDay(new Date());
+          var offset = Math.max(0, Math.floor((today - startOfLocalDay(challengeStartDate)) / 86400000));
+          var currentIndex = offset % challengeDays.length;
+          var selectedIndex = appState.selectedChallengeIndex;
+          var visibleIndices = [];
+
+          if (selectedIndex === null) {
+            selectedIndex = currentIndex;
+          }
+
+          for (var i = 0; i < 5; i += 1) {
+            visibleIndices.push((currentIndex + i) % challengeDays.length);
+          }
+
+          if (visibleIndices.indexOf(selectedIndex) === -1) {
+            selectedIndex = currentIndex;
+            appState.selectedChallengeIndex = currentIndex;
+          }
+
+          renderChallengeDetails(
+            challengeDays[selectedIndex],
+            selectedIndex === currentIndex ? "Dagens utfordring" : "Valgt utfordring"
+          );
+
+          challengeSchedule.innerHTML = "";
+          for (var i = 0; i < 5; i += 1) {
+            var index = (currentIndex + i) % challengeDays.length;
+            var challenge = challengeDays[index];
+            var date = new Date(today);
+            date.setDate(today.getDate() + i);
+            var card = document.createElement("button");
+            card.type = "button";
+            card.className = "challenge-week" + (index === selectedIndex ? " challenge-week--active" : "");
+            card.setAttribute("aria-pressed", index === selectedIndex ? "true" : "false");
+            card.innerHTML =
+              "<span>" + escapeHtml(new Intl.DateTimeFormat("nb-NO", { day: "numeric", month: "short" }).format(date)) + "</span>" +
+              "<strong>" + escapeHtml(challenge.title) + "</strong>" +
+              "<p>" + escapeHtml(challenge.goals[0]) + "</p>";
+            card.addEventListener("click", function (selectedCardIndex) {
+              return function () {
+                appState.selectedChallengeIndex = selectedCardIndex;
+                renderChallengeSchedule();
+              };
+            }(index));
+            challengeSchedule.appendChild(card);
+          }
+        }
+
+        function pointsForEntry(entry) {
+          var base = activityPoints[entry.activity] || 2;
+          var minuteBonus = Math.max(1, Math.round(Number(entry.minutes || 0) / 15));
+          var mediaBonus = entry.media ? 2 : 0;
+          var distanceBonus = entry.activity === "Løp" && entry.meters ? Math.max(1, Math.round(entry.meters / 500)) : 0;
+          var challengeBonus = entry.challenge ? 2 : 0;
+          return base + minuteBonus + mediaBonus + distanceBonus + challengeBonus;
+        }
+
+        function totalReactions(entry) {
+          return Number(entry.reactions.cheer || 0) +
+            Number(entry.reactions.fire || 0) +
+            Number(entry.reactions.clap || 0);
+        }
+
+        function buildPlayerSummary(entries) {
+          var map = {};
+
+          players.forEach(function (player) {
+            map[player] = {
+              player: player,
+              points: 0,
+              sessions: 0,
+              minutes: 0,
+              meters: 0,
+              support: 0,
+              comments: 0,
+              streak: 0,
+              latestAt: "",
+              latestActivity: ""
+            };
+          });
+
+          entries.forEach(function (entry) {
+            var summary = map[entry.player];
+            summary.points += pointsForEntry(entry) + totalReactions(entry);
+            summary.sessions += 1;
+            summary.minutes += Number(entry.minutes || 0);
+            summary.meters += Number(entry.meters || 0);
+            summary.support += totalReactions(entry);
+            summary.comments += entry.comments.length;
+
+            if (!summary.latestAt || new Date(entry.createdAt) > new Date(summary.latestAt)) {
+              summary.latestAt = entry.createdAt;
+              summary.latestActivity = entry.activity;
+            }
+          });
+
+          Object.keys(map).forEach(function (player) {
+            var uniqueDays = entries
+              .filter(function (entry) { return entry.player === player; })
+              .map(function (entry) { return entry.createdAt.slice(0, 10); })
+              .filter(function (value, index, all) { return all.indexOf(value) === index; })
+              .sort()
+              .reverse();
+
+            var streak = 0;
+            var previousDate = uniqueDays.length ? new Date(uniqueDays[0] + "T00:00:00") : null;
+
+            if (previousDate) {
+              streak = 1;
+            }
+
+            for (var i = 1; i < uniqueDays.length; i += 1) {
+              var currentDate = new Date(uniqueDays[i] + "T00:00:00");
+              var difference = Math.round((previousDate - currentDate) / 86400000);
+              if (difference !== 1) {
+                break;
+              }
+              streak += 1;
+              previousDate = currentDate;
+            }
+
+            map[player].streak = uniqueDays.length ? streak : 0;
+          });
+
+          return map;
+        }
+
+        function shortName(player) {
+          return player.split(" ").slice(0, 2).join(" ");
+        }
+
+        function initials(player) {
+          return player
+            .split(" ")
+            .filter(Boolean)
+            .slice(0, 2)
+            .map(function (part) { return part.charAt(0).toUpperCase(); })
+            .join("");
+        }
+
+        function buildPlayerOptions() {
+          players.forEach(function (player) {
+            var option = document.createElement("option");
+            option.value = player;
+            option.textContent = player;
+            playerSelect.appendChild(option);
+
+            var filterOption = document.createElement("option");
+            filterOption.value = player;
+            filterOption.textContent = player;
+            feedFilter.appendChild(filterOption);
+          });
+        }
+
+        function renderRoster(entries) {
+          var activePlayers = new Set(entries.map(function (entry) { return entry.player; }));
+          rosterGrid.innerHTML = "";
+
+          players.forEach(function (player) {
+            var chip = document.createElement("article");
+            chip.className = "roster-chip";
+            if (activePlayers.has(player)) {
+              chip.classList.add("roster-chip--active");
+            }
+
+            chip.innerHTML =
+              "<strong>" + escapeHtml(player) + "</strong>" +
+              "<span>" + (activePlayers.has(player) ? "Har loggført aktivitet" : "Ingen økt registrert ennå") + "</span>";
+            rosterGrid.appendChild(chip);
+          });
+        }
+
+        function renderStats(entries) {
+          var totalMeters = entries.reduce(function (sum, entry) {
+            return sum + Number(entry.meters || 0);
+          }, 0);
+          var uniquePlayers = new Set(entries.map(function (entry) { return entry.player; })).size;
+
+          statSessions.textContent = String(entries.length);
+          statDistance.textContent = formatNumber(totalMeters);
+          statPlayers.textContent = String(uniquePlayers);
+        }
+
+        function renderLeaderboard(entries) {
+          var scoreMap = buildPlayerSummary(entries);
+          var rankedPlayers = Object.keys(scoreMap)
+            .map(function (key) { return scoreMap[key]; })
+            .sort(function (a, b) {
+              if (b.points !== a.points) {
+                return b.points - a.points;
+              }
+              return a.player.localeCompare(b.player, "nb");
+            })
+            .filter(function (item) { return item.sessions > 0; })
+            .slice(0, 10);
+
+          leaderboardList.innerHTML = "";
+
+          if (!rankedPlayers.length) {
+            leaderboardList.innerHTML = "<p class=\"leaderboard__empty\">Ingen aktivitet registrert ennå.</p>";
+            return;
+          }
+
+          rankedPlayers.forEach(function (item, index) {
+            var row = document.createElement("article");
+            row.className = "leaderboard__row";
+            row.innerHTML =
+              "<span class=\"leaderboard__place\">" + (index + 1) + "</span>" +
+              "<div class=\"leaderboard__player\"><strong>" + escapeHtml(item.player) + "</strong><span>" + formatNumber(item.minutes) + " min • " + formatNumber(item.meters) + " m • streak " + item.streak + "</span></div>" +
+              "<strong class=\"leaderboard__score\">" + item.points + " p</strong>";
+            leaderboardList.appendChild(row);
+          });
+        }
+
+        function renderStories(entries) {
+          var summaryMap = buildPlayerSummary(entries);
+          var storyPlayers = Object.keys(summaryMap)
+            .map(function (key) { return summaryMap[key]; })
+            .filter(function (item) { return item.sessions > 0; })
+            .sort(function (a, b) {
+              if (b.streak !== a.streak) {
+                return b.streak - a.streak;
+              }
+              return new Date(b.latestAt) - new Date(a.latestAt);
+            });
+          var visiblePlayers = appState.showAllStories
+            ? storyPlayers
+            : storyPlayers.slice(0, 3);
+
+          storiesList.innerHTML = "";
+
+          if (!storyPlayers.length) {
+            storiesList.innerHTML = "<p class=\"feed__empty\">Stories fylles opp når spillerne begynner å registrere økter.</p>";
+            storiesToggle.hidden = true;
+            return;
+          }
+
+          storiesToggle.hidden = storyPlayers.length <= 3;
+          storiesToggle.textContent = appState.showAllStories
+            ? "Vis færre spillere"
+            : "Se flere spillere";
+
+          visiblePlayers.forEach(function (item) {
+            var story = document.createElement("article");
+            story.className = "story-card";
+            story.innerHTML =
+              "<div class=\"story-card__avatar\">" + escapeHtml(initials(item.player)) + "</div>" +
+              "<strong>" + escapeHtml(shortName(item.player)) + "</strong>" +
+              "<span>" + formatNumber(item.minutes) + " min totalt</span>" +
+              "<p>" + formatNumber(item.meters) + " meter løpt</p>" +
+              "<b>" + formatStreak(item.streak) + "</b>";
+            storiesList.appendChild(story);
+          });
+        }
+
+        function renderPulse(entries) {
+          var summaryMap = buildPlayerSummary(entries);
+          var summaryList = Object.keys(summaryMap)
+            .map(function (key) { return summaryMap[key]; })
+            .filter(function (item) { return item.sessions > 0; });
+
+          if (!summaryList.length) {
+            pulseMostMinutes.textContent = "-";
+            pulseMostMinutesMeta.textContent = "Ingen aktivitet ennå";
+            pulseBestStreak.textContent = "-";
+            pulseBestStreakMeta.textContent = "Ingen aktivitet ennå";
+            pulseMostDistance.textContent = "-";
+            pulseMostDistanceMeta.textContent = "Ingen aktivitet ennå";
+            return;
+          }
+
+          var mostMinutes = summaryList.slice().sort(function (a, b) { return b.minutes - a.minutes; })[0];
+          var bestStreak = summaryList.slice().sort(function (a, b) { return b.streak - a.streak || b.points - a.points; })[0];
+          var mostDistance = summaryList.slice().sort(function (a, b) { return b.meters - a.meters || b.points - a.points; })[0];
+
+          pulseMostMinutes.textContent = shortName(mostMinutes.player);
+          pulseMostMinutesMeta.textContent = formatNumber(mostMinutes.minutes) + " minutter totalt";
+          pulseBestStreak.textContent = shortName(bestStreak.player);
+          pulseBestStreakMeta.textContent = bestStreak.streak === 1 ? "1 dag på rad" : formatNumber(bestStreak.streak) + " dager på rad";
+          pulseMostDistance.textContent = shortName(mostDistance.player);
+          pulseMostDistanceMeta.textContent = formatNumber(mostDistance.meters) + " meter totalt";
+        }
+
+        function renderFeed(entries) {
+          revokeMediaUrls();
+          var filterValue = feedFilter.value;
+          var ranking = buildPlayerSummary(entries);
+          var rankedNames = Object.keys(ranking)
+            .map(function (key) { return ranking[key]; })
+            .sort(function (a, b) { return b.points - a.points || b.minutes - a.minutes; })
+            .map(function (item) { return item.player; });
+          var visibleEntries = entries
+            .slice()
+            .sort(function (a, b) { return new Date(b.createdAt) - new Date(a.createdAt); })
+            .filter(function (entry) {
+              return filterValue === "Alle" || entry.player === filterValue;
+            });
+
+          feedList.innerHTML = "";
+
+          if (!visibleEntries.length) {
+            feedList.innerHTML = "<p class=\"feed__empty\">Ingen økter matcher filteret akkurat nå.</p>";
+            return;
+          }
+
+          visibleEntries.forEach(function (entry) {
+            var fragment = feedTemplate.content.cloneNode(true);
+            var card = fragment.querySelector(".feed-card");
+            var avatar = fragment.querySelector(".feed-card__avatar");
+            var rank = fragment.querySelector(".feed-card__rank");
+            var player = fragment.querySelector(".feed-card__player");
+            var stamp = fragment.querySelector(".feed-card__stamp");
+            var activity = fragment.querySelector(".feed-card__activity");
+            var streak = fragment.querySelector(".feed-card__streak");
+            var minutes = fragment.querySelector(".feed-card__minutes");
+            var notes = fragment.querySelector(".feed-card__notes");
+            var mediaContainer = fragment.querySelector(".feed-card__media");
+            var badges = fragment.querySelector(".feed-card__badges");
+            var socialStats = fragment.querySelectorAll(".feed-card__socialstat");
+            var reactionButtons = fragment.querySelectorAll(".reaction-button");
+            var reactionCount = fragment.querySelector(".reaction-count");
+            var commentList = fragment.querySelector(".comment-list");
+            var commentForm = fragment.querySelector(".comment-form");
+            var playerSummary = ranking[entry.player];
+            var playerRank = rankedNames.indexOf(entry.player) + 1;
+
+            avatar.textContent = initials(entry.player);
+            rank.textContent = playerRank ? "Topp " + playerRank : "";
+            player.textContent = entry.player;
+            stamp.textContent = formatDate(entry.createdAt);
+            activity.textContent = entry.activity;
+            streak.textContent = playerSummary.streak ? formatStreak(playerSummary.streak) : "Ny aktivitet";
+            minutes.textContent = entry.activity === "Løp" && entry.meters
+              ? formatNumber(entry.minutes) + " minutter egentrening • " + formatNumber(entry.meters) + " meter løpt"
+              : formatNumber(entry.minutes) + " minutter egentrening";
+            notes.textContent = entry.notes;
+            reactionCount.textContent = totalReactions(entry) + " reaksjoner";
+
+            if (entry.media) {
+              mediaContainer.hidden = false;
+              if (appState.mode === "remote" && entry.media.url) {
+                mediaContainer.innerHTML = "";
+                if ((entry.media.type || "").indexOf("video/") === 0) {
+                  var remoteVideo = document.createElement("video");
+                  remoteVideo.className = "feed-card__video";
+                  remoteVideo.controls = true;
+                  remoteVideo.preload = "metadata";
+                  remoteVideo.src = entry.media.url;
+                  mediaContainer.appendChild(remoteVideo);
+                } else {
+                  var remoteImage = document.createElement("img");
+                  remoteImage.className = "feed-card__image";
+                  remoteImage.src = entry.media.url;
+                  remoteImage.alt = "Opplastet bilde fra " + entry.player;
+                  mediaContainer.appendChild(remoteImage);
+                }
+              } else {
+                loadMediaFile(entry.id).then(function (file) {
+                  if (!file || !card.isConnected) {
+                    return;
+                  }
+
+                  mediaContainer.innerHTML = "";
+                  var objectUrl = createTrackedUrl(file);
+                  if ((entry.media.type || "").indexOf("video/") === 0) {
+                    var video = document.createElement("video");
+                    video.className = "feed-card__video";
+                    video.controls = true;
+                    video.preload = "metadata";
+                    video.src = objectUrl;
+                    mediaContainer.appendChild(video);
+                  } else {
+                    var image = document.createElement("img");
+                    image.className = "feed-card__image";
+                    image.src = objectUrl;
+                    image.alt = "Opplastet bilde fra " + entry.player;
+                    mediaContainer.appendChild(image);
+                  }
+                }).catch(function () {
+                  mediaContainer.hidden = true;
+                });
+              }
+            }
+
+            if (entry.challenge) {
+              var badge = document.createElement("span");
+              badge.className = "badge";
+              badge.textContent = "Dagens utfordring fullført";
+              badges.appendChild(badge);
+            }
+
+            var pointsBadge = document.createElement("span");
+            pointsBadge.className = "badge badge--muted";
+            pointsBadge.textContent = pointsForEntry(entry) + " poeng";
+            badges.appendChild(pointsBadge);
+
+            var rankingBadge = document.createElement("span");
+            rankingBadge.className = "badge badge--muted";
+            rankingBadge.textContent = playerRank <= 10
+              ? "Nr. " + playerRank + " på topp 10"
+              : "Nr. " + playerRank + " i sommer";
+            badges.appendChild(rankingBadge);
+
+            socialStats[0].textContent = formatNumber(playerSummary.minutes) + " min totalt i sommer";
+            socialStats[1].textContent = formatNumber(playerSummary.meters) + " meter løpt";
+            socialStats[2].textContent = formatStreak(playerSummary.streak);
+
+            entry.comments.forEach(function (comment) {
+              var commentRow = document.createElement("article");
+              commentRow.className = "comment";
+              commentRow.innerHTML =
+                "<strong>" + escapeHtml(comment.author) + "</strong>" +
+                "<span>" + escapeHtml(comment.text) + "</span>";
+              commentList.appendChild(commentRow);
+            });
+
+            reactionButtons.forEach(function (button) {
+              button.addEventListener("click", async function () {
+                var reactionType = button.getAttribute("data-reaction");
+                if (appState.mode === "remote") {
+                  try {
+                    await addRemoteReaction(entry.id, reactionType);
+                  } catch (error) {
+                    syncStatus.textContent = "Kunne ikke lagre reaksjonen akkurat nå";
+                  }
+                  return;
+                }
+
+                var nextEntries = loadEntries().map(function (item) {
+                  if (item.id === entry.id) {
+                    var nextReactions = Object.assign({}, item.reactions);
+                    nextReactions[reactionType] = Number(nextReactions[reactionType] || 0) + 1;
+                    return Object.assign({}, item, { reactions: nextReactions });
+                  }
+                  return item;
+                });
+                saveEntries(nextEntries);
+                renderAll(nextEntries);
+              });
+            });
+
+            commentForm.addEventListener("submit", async function (event) {
+              event.preventDefault();
+              var authorInput = commentForm.querySelector(".comment-form__author");
+              var textInput = commentForm.querySelector(".comment-form__text");
+              var author = authorInput.value.trim() || "Støttespiller";
+              var text = textInput.value.trim();
+
+              if (!text) {
+                return;
+              }
+
+              if (appState.mode === "remote") {
+                try {
+                  await addRemoteComment(entry.id, author, text);
+                } catch (error) {
+                  syncStatus.textContent = "Kunne ikke lagre kommentaren akkurat nå";
+                }
+                return;
+              }
+
+              var nextEntries = loadEntries().map(function (item) {
+                if (item.id === entry.id) {
+                  return Object.assign({}, item, {
+                    comments: item.comments.concat([{ author: author, text: text }])
+                  });
+                }
+                return item;
+              });
+
+              saveEntries(nextEntries);
+              renderAll(nextEntries);
+            });
+
+            feedList.appendChild(card);
+          });
+        }
+
+        function renderAll(entries) {
+          if (appState.mode === "remote") {
+            appState.entries = normalizeEntries(entries);
+          }
+          renderStats(entries);
+          renderStories(entries);
+          renderPulse(entries);
+          renderFeed(entries);
+          renderLeaderboard(entries);
+          renderRoster(entries);
+        }
+
+        function toggleDistanceField() {
+          var isRun = activitySelect.value === "Løp";
+          distanceField.hidden = !isRun;
+          distanceInput.required = isRun;
+          if (!isRun) {
+            distanceInput.value = "";
+          }
+        }
+
+        mediaInput.addEventListener("change", function () {
+          var file = mediaInput.files && mediaInput.files[0];
+          mediaHint.textContent = file
+            ? "Valgt fil: " + file.name
+            : "Du kan legge ved ett bilde eller én videosnutt. Filen lagres lokalt i denne nettleseren.";
+        });
+
+        entryForm.addEventListener("submit", async function (event) {
+          event.preventDefault();
+
+          var file = mediaInput.files && mediaInput.files[0];
+          var nextId = String(Date.now());
+          var media = null;
+
+          if (file) {
+            media = {
+              name: file.name,
+              type: file.type || "application/octet-stream"
+            };
+          }
+
+          var nextEntry = {
+            id: nextId,
+            player: playerSelect.value,
+            activity: activitySelect.value,
+            minutes: Number(document.getElementById("minutes-input").value),
+            meters: activitySelect.value === "Løp" ? Number(distanceInput.value || 0) : 0,
+            notes: document.getElementById("notes-input").value.trim(),
+            media: media,
+            challenge: document.getElementById("challenge-input").checked,
+            createdAt: new Date().toISOString(),
+            reactions: { cheer: 0, fire: 0, clap: 0 },
+            comments: []
+          };
+
+          if (file && appState.mode !== "remote") {
+            try {
+              await saveMediaFile(nextId, file);
+            } catch (error) {
+              mediaHint.textContent = "Filen kunne ikke lagres lokalt i denne nettleseren akkurat nå.";
+              return;
+            }
+          }
+
+          try {
+            if (appState.mode === "remote") {
+              await createRemoteEntry(nextEntry, file);
+            } else {
+              var nextEntries = loadEntries().concat([nextEntry]);
+              saveEntries(nextEntries);
+              renderAll(nextEntries);
+            }
+          } catch (error) {
+            mediaHint.textContent = "Kunne ikke lagre økten i delt database akkurat nå.";
+            return;
+          }
+
+          entryForm.reset();
+          document.getElementById("minutes-input").value = 30;
+          toggleDistanceField();
+          mediaHint.textContent = appState.mode === "remote"
+            ? "Bilde/video lastes opp til lagets delte feed."
+            : "Du kan legge ved ett bilde eller én videosnutt. Filen lagres lokalt i denne nettleseren.";
+        });
+
+        feedFilter.addEventListener("change", function () {
+          renderFeed(getEntries());
+        });
+
+        activitySelect.addEventListener("change", toggleDistanceField);
+        storiesToggle.addEventListener("click", function () {
+          appState.showAllStories = !appState.showAllStories;
+          renderStories(getEntries());
+        });
+
+        resetDemoButton.addEventListener("click", function () {
+          if (appState.mode === "remote") {
+            syncRemoteEntries().catch(function () {
+              syncStatus.textContent = "Kunne ikke oppdatere den delte feeden akkurat nå";
+            });
+            return;
+          }
+
+          saveEntries(demoEntries.slice());
+          clearMediaFiles().then(function () {
+            renderAll(loadEntries());
+          }).catch(function () {
+            renderAll(loadEntries());
+          });
+        });
+
+        async function initializeApplication() {
+          buildPlayerOptions();
+          toggleDistanceField();
+          renderChallengeSchedule();
+          updateRuntimeModeUi();
+          renderAll(loadEntries());
+
+          if (!isRemoteConfigured()) {
+            return;
+          }
+
+          try {
+            appState.mode = "remote";
+            await ensureRemoteClient();
+            await ensureRemoteSession();
+            await syncRemoteEntries();
+            startRemotePolling();
+          } catch (error) {
+            appState.mode = "local";
+            updateRuntimeModeUi();
+            syncStatus.textContent = "Delt database er ikke aktiv ennå. Siden kjører i lokal demomodus.";
+            renderAll(loadEntries());
+          }
+        }
+
+        initializeApplication();
+
+        var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var revealElements = document.querySelectorAll(".reveal");
+        document.querySelectorAll(".hero .reveal").forEach(function (element) {
+          element.classList.add("is-visible");
+        });
+
+        if (reduceMotion || !("IntersectionObserver" in window)) {
+          revealElements.forEach(function (element) { element.classList.add("is-visible"); });
+          return;
+        }
+
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15, rootMargin: "0px 0px -8% 0px" });
+
+        revealElements.forEach(function (element) {
+          observer.observe(element);
+        });
+      })();
+    </script>
   </body>
 </html>
