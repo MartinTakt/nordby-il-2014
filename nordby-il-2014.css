@@ -243,6 +243,14 @@ textarea {
   margin-top: 28px;
 }
 
+.hero__actions {
+  max-width: 760px;
+}
+
+.hero__actions .button {
+  flex: 0 1 auto;
+}
+
 .button {
   display: inline-flex;
   align-items: center;
@@ -580,7 +588,7 @@ textarea {
 }
 
 .log-layout {
-  grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.7fr);
+  grid-template-columns: minmax(0, 1fr);
   align-items: start;
   margin-top: 36px;
 }

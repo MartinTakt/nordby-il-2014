@@ -64,7 +64,9 @@
 
             <div class="hero__actions">
               <a class="button button--primary" href="#registrer">Legg inn økt</a>
-              <a class="button button--ghost" href="#feed">Se aktivitetene</a>
+              <a class="button button--ghost" href="#pulse">Se aktivitetene</a>
+              <a class="button button--ghost" href="#feed">Sommerfeed</a>
+              <a class="button button--ghost" href="#laget">Lagoversikt</a>
             </div>
           </div>
 
@@ -267,28 +269,6 @@
             </form>
           </section>
 
-          <aside class="insight-panel reveal" style="--delay: 0.12s">
-            <div class="panel-card">
-              <p class="panel-card__eyebrow">Trenerens bruk</p>
-              <h3>Dette gir deg rask oversikt.</h3>
-              <ul class="panel-card__list">
-                <li>Hvem som er aktive i sommer</li>
-                <li>Hva spillerne trener mest på</li>
-                <li>Hvem som deler bilder, video og refleksjon</li>
-                <li>Hvilke innlegg som skaper mest engasjement</li>
-              </ul>
-            </div>
-
-            <div class="panel-card panel-card--accent">
-              <p class="panel-card__eyebrow" id="backend-kicker">Publisering</p>
-              <h3 id="backend-title">Klar for delt bruk på mobil.</h3>
-              <p id="backend-copy">
-                Når Supabase er koblet til, lagres økter, kommentarer og media
-                felles for hele laget uten at spillerne trenger vanlig
-                innlogging.
-              </p>
-            </div>
-          </aside>
         </section>
 
         <section class="feed-section reveal" id="feed">
@@ -599,9 +579,6 @@
         var resetDemoButton = document.getElementById("reset-demo");
         var syncStatus = document.getElementById("sync-status");
         var storageSummary = document.getElementById("storage-summary");
-        var backendKicker = document.getElementById("backend-kicker");
-        var backendTitle = document.getElementById("backend-title");
-        var backendCopy = document.getElementById("backend-copy");
         var pulseMostMinutes = document.getElementById("pulse-most-minutes");
         var pulseMostMinutesMeta = document.getElementById("pulse-most-minutes-meta");
         var pulseBestStreak = document.getElementById("pulse-best-streak");
@@ -767,17 +744,11 @@
               ? "Delt database aktiv • sist synket " + new Intl.DateTimeFormat("nb-NO", { hour: "2-digit", minute: "2-digit" }).format(appState.lastRemoteSync)
               : "Delt database aktiv";
             storageSummary.textContent = "Økter, kommentarer og media lagres delt for hele laget og fungerer på tvers av mobiler.";
-            backendKicker.textContent = "Delt lagring";
-            backendTitle.textContent = "Felles feed for hele laget.";
-            backendCopy.textContent = "Alle som åpner siden ser de samme øktene. Spillere trenger ikke vanlig innlogging, siden bruker anonym innlogging per enhet i bakgrunnen.";
             resetDemoButton.textContent = "Oppdater feed";
             mediaHint.textContent = "Bilde/video lastes opp til lagets delte feed.";
           } else {
             syncStatus.textContent = "Lokal demo uten delt database";
             storageSummary.textContent = "Prototypen lagrer aktivitetene lokalt i nettleseren på denne enheten.";
-            backendKicker.textContent = "Publisering";
-            backendTitle.textContent = "Klar for delt bruk på mobil.";
-            backendCopy.textContent = "Når Supabase er koblet til, lagres økter, kommentarer og media felles for hele laget uten at spillerne trenger vanlig innlogging.";
             resetDemoButton.textContent = "Nullstill demo";
             mediaHint.textContent = "Du kan legge ved ett bilde eller én videosnutt. Filen lagres lokalt i denne nettleseren.";
           }
