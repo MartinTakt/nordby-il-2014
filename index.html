@@ -734,8 +734,15 @@
             .slice(0, 60);
         }
 
+        function getNormalizedSupabaseUrl() {
+          return String(remoteConfig.url || "")
+            .trim()
+            .replace(/\/rest\/v1\/?$/i, "")
+            .replace(/\/+$/g, "");
+        }
+
         function isRemoteConfigured() {
-          return Boolean(remoteConfig.url && remoteConfig.anonKey);
+          return Boolean(getNormalizedSupabaseUrl() && remoteConfig.anonKey);
         }
 
         function getRemoteBucket() {
@@ -789,7 +796,7 @@
             throw new Error("Supabase-klienten er ikke lastet");
           }
 
-          appState.supabase = window.supabase.createClient(remoteConfig.url, remoteConfig.anonKey, {
+          appState.supabase = window.supabase.createClient(getNormalizedSupabaseUrl(), remoteConfig.anonKey, {
             auth: {
               persistSession: true,
               autoRefreshToken: true,
